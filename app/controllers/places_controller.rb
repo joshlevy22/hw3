@@ -14,4 +14,8 @@ class PlacesController < ApplicationController
     redirect_to("/places")
   end
 
+  def show
+    @place = Place.find(params[:id])
+  end
+  
 end

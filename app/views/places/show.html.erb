@@ -1,0 +1,33 @@
+<h1><%= @place.name %></h1>
+<h2>Journal Entries</h2>
+
+<% for entry in @place.entries%>
+  <p>
+    <strong><%= entry.title%></strong> - <%= entry.occurred_on%>
+    <br>
+    <%= entry.description%>
+  </p>
+<% end %>
+
+
+<h2>Add a New Journal Entry</h2>
+<form action="/entries/create/<%= @place.id%>" method ="post">
+  <label>Title:</label>
+  <input type = "text" name = "title">
+  <br>
+
+  <label>Description:</label>
+  <input type = "text" name = "description">
+  <br>
+
+  <label>Date:</label>
+  <input type = "date" name = "date">
+  <br>
+
+  <button type="submit">Add Entry</button>
+
+</form>
+
+<p>
+<a href="/places">Back to Places</a>
+</p>
