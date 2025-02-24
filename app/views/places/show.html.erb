@@ -1,28 +1,34 @@
 <h1><%= @place.name %></h1>
-<h2>Journal Entries</h2>
 
 <% for entry in @place.entries%>
   <p>
-    <strong><%= entry.title%></strong> - <%= entry.occurred_on%>
+    <h3><%= entry.title%></h3>
+    <p><strong><%= entry.occurred_on%></strong></p>
+    <p><%= entry.description%></p>
     <br>
-    <%= entry.description%>
   </p>
 <% end %>
 
 
 <h2>Add a New Journal Entry</h2>
-<form action="/entries/create/<%= @place.id%>" method ="post">
+<form action="/entries/create/" method ="post">
+  <%= hidden_field_tag "place_id", @place.id %>
   <label>Title:</label>
   <input type = "text" name = "title">
+  <br>
   <br>
 
   <label>Description:</label>
   <input type = "text" name = "description">
   <br>
+  <br>
 
   <label>Date:</label>
-  <input type = "date" name = "date">
+  <input type = "date" name = "occurred_on">
   <br>
+  <br>
+
+
 
   <button type="submit">Add Entry</button>
 
